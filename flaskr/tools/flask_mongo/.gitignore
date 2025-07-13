@@ -1,0 +1,4 @@
+__pycache__/
+build/
+flaskr.egg-info/
+venv/

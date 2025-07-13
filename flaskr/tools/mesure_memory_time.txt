@@ -1,0 +1,11 @@
+# for linux
+/usr/bin/time -v "command to run"
+# from the output
+# User time (seconds): 0.33
+# Maximum resident set size (kbytes): 3192
+
+# for windows run
+.\WinBinTime.exe "command to run"
+# from the output
+# Real: 27.0994 ms
+# WorkingSetSize: 36864 bytes

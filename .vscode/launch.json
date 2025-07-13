@@ -1,0 +1,111 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "env": {
+        "PYDEVD_LOAD_NATIVE_LIB": "0",
+        "PYDEVD_USE_CYTHON": "0"
+      }
+    },
+    {
+      "name": "Python: Flask",
+      "type": "python",
+      "request": "launch",
+      "module": "flask",
+      "env": {
+        "FLASK_APP": "./flaskr/tools/flask_mongo/run.py",
+        "FLASK_ENV": "development",
+        "FLASK_DEBUG": "1",
+        "ENV_FILE_LOCATION": "./.env.test"
+      },
+      "args": [
+        "run"
+      ],
+      "jinja": true
+    },
+    {
+      "name": "Python: Flask plotly",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "flask",
+      "env": {
+        "FLASK_APP": "flaskr/tools/plotly_web_scipy/plotly_web_scipy/app.py",
+        "FLASK_DEBUG": "1"
+      },
+      "args": [
+        "run",
+        "--no-debugger",
+        "--no-reload"
+      ],
+      "jinja": true,
+      "justMyCode": true
+    },
+    {
+      "name": "Python:Streamlit",
+      "type": "python",
+      "request": "launch",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "${file}",
+        "--server.port",
+        "3001"
+      ]
+    },
+    {
+      "name": "Python:Manim",
+      "type": "python",
+      "request": "launch",
+      "module": "manim",
+      "args": [
+        "-pql",
+        "${file}",
+        "Main"
+      ]
+    },
+    {
+      "name": "Python:Locust",
+      "type": "python",
+      "request": "launch",
+      "module": "locust",
+      "args": [
+          "-f", "flaskr/tools/load_test/fast_api_load.py",
+          "--headless",
+          "-u", "10",  // Number of users
+          "-r", "1",   // Spawn rate - add 1 user every sec
+          "--run-time", "1m", // Duration of the test for timeout
+          "--html", "flaskr/tools/load_test/locust_report.html"
+      ],
+      "console": "integratedTerminal",
+      "env": {
+          "PYTHONPATH": "${workspaceFolder}"
+      },
+      "justMyCode": true,
+      "stopOnEntry": false
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/yaniv/OneDrive/python-flask/flaskr/tools/c_dll",
+      "program": "c:/Users/yaniv/OneDrive/python-flask/flaskr/tools/c_dll/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

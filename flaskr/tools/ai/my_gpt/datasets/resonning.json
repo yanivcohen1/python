@@ -1,0 +1,17 @@
+[
+  {
+    "context": "France is a country in Europe. Its capital is Paris, known for the Eiffel Tower.",
+    "question": "What is the capital of France?",
+    "answers": "Paris"
+  },
+  {
+    "context": "The tallest mountain in the world is Mount Everest, located in the Himalayas on the Nepal–China border.",
+    "question": "Which mountain is the tallest in the world?",
+    "answers": "Mount Everest"
+  },
+  {
+    "context": "The Great Wall of China was built over several dynasties to protect against invasions.",
+    "question": "Why was the Great Wall of China built?",
+    "answers": "To protect against invasions"
+  }
+]

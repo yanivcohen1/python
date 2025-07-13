@@ -1,0 +1,18 @@
+Step 3) Install VPython into venv using pip to get the latest VPython release.
+pip install vpython
+
+Step 4) Install jupyterlab
+
+pip install jupyterlab
+
+Step 5) Install vpyton extension for jupyterlab
+
+pip install jupyterlab-vpython
+
+Step 6) Launch Jupterlab
+
+jupyter lab
+
+open url: http://127.0.0.1:8888/lab
+tocken: 468efe1c6488946a41840df5871660d52dfcb24ee8770f0d
+or url: http://localhost:8888/lab?token=468efe1c6488946a41840df5871660d52dfcb24ee8770f0d

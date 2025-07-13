@@ -1,0 +1,58 @@
+[project]
+name = "py_projs" # project nmae
+version = "1.0.0"
+description = "The basic blog app built in the Flask tutorial"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = [
+"langchain",
+"langgraph",
+"langchain-ollama",
+"langchain-openai",
+"langchain-chroma",
+"langchain-community",
+"fastembed",
+# "langchain-embeddings",
+# "langchain-embeddings-openai",
+# "langchain-embeddings-ollama",
+# "langchain-embeddings-chroma",
+"flask",
+"gunicorn",
+"flask-cors",
+"flask-socketio",
+"pandas", 
+"fastapi", 
+"uvicorn"]
+
+[project.urls]
+homepage = "https://your_project_homepage.com"
+repository = "https://github.com/your_username/your_project"
+
+[[project.authors]]
+name = "Your Name"
+email = "your_email@example.com"
+
+# [project.optional-dependencies]
+# test = ["pytest", "coverage"]
+
+# [build-system]
+# requires = ["setuptools>=64", "wheel"]
+# build-backend = "setuptools.build_meta"
+
+# [tool.bdist_wheel]
+# universal = true
+
+# [tool.coverage.run]
+# branch = true
+# source = ["adi","yaniv","yair"]
+
+# [tool.pytest.ini_options]
+# minversion = "6.0"
+# testpaths = [
+#     "yaniv/test/py_test",
+#     "integration"
+# ]
+
+[tool.setuptools]
+packages = ["main"]

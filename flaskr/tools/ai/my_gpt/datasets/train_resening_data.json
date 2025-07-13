@@ -1,0 +1,98 @@
+[
+  {
+    "context": "Alan Turing created the Turing Machine. The Turing Machine inspired computer science.",
+    "question": "Why is Alan Turing important in computer science?",
+    "answers": {
+      "text": ["The Turing Machine inspired computer science"],
+      "answer_start": [41]
+    },
+    "reasoning_label": "causal"
+  },
+  {
+    "context": "Photosynthesis is how plants make food. This process uses sunlight and carbon dioxide.",
+    "question": "Why do plants need sunlight?",
+    "answers": {
+      "text": ["This process uses sunlight"],
+      "answer_start": [50]
+    },
+    "reasoning_label": "causal"
+  },
+  {
+    "context": "Whales are mammals. Fish are not mammals.",
+    "question": "What makes whales different from fish?",
+    "answers": {
+      "text": ["Whales are mammals"],
+      "answer_start": [0]
+    },
+    "reasoning_label": "comparative"
+  },
+  {
+    "context": "The Eiffel Tower is in Paris. It is one of the most visited landmarks in the world.",
+    "question": "Where is the Eiffel Tower?",
+    "answers": {
+      "text": ["Paris"],
+      "answer_start": [25]
+    },
+    "reasoning_label": "factual"
+  },
+    {
+    "context": "France is a country in Europe. Its capital is Paris, known for the Eiffel Tower.",
+    "question": "What is the capital of France?",
+    "answers": { "text": ["Paris"], "answer_start": [43] },
+    "reasoning_label": "factual"
+  },
+  {
+    "context": "Python is a programming language that emphasizes code readability. It was created by Guido van Rossum.",
+    "question": "Who created Python?",
+    "answers": { "text": ["Guido van Rossum"], "answer_start": [84] },
+    "reasoning_label": "factual"
+  },
+  {
+    "context": "The Moon is Earth's only natural satellite and was formed 4.5 billion years ago.",
+    "question": "What is the Moon?",
+    "answers": { "text": ["Earth's only natural satellite"], "answer_start": [13] },
+    "reasoning_label": "factual"
+  },
+  {
+    "context": "The Amazon rainforest is the largest tropical rainforest in the world, covering much of Brazil.",
+    "question": "What is the largest tropical rainforest?",
+    "answers": { "text": ["Amazon rainforest"], "answer_start": [4] },
+    "reasoning_label": "factual"
+  },
+  {
+    "context": "The human heart has four chambers: two atria and two ventricles.",
+    "question": "How many chambers does the human heart have?",
+    "answers": { "text": ["four"], "answer_start": [24] },
+    "reasoning_label": "factual"
+  },
+  {
+    "context": "Water boils at 100 degrees Celsius under standard atmospheric pressure.",
+    "question": "At what temperature does water boil?",
+    "answers": { "text": ["100 degrees Celsius"], "answer_start": [16] },
+    "reasoning_label": "factual"
+  },
+  {
+    "context": "Mount Everest is the highest mountain in the world, standing at 8,848 meters.",
+    "question": "What is the highest mountain in the world?",
+    "answers": { "text": ["Mount Everest"], "answer_start": [0] },
+    "reasoning_label": "factual"
+  },
+  {
+    "context": "The Great Wall of China was built to protect Chinese states from invasions.",
+    "question": "Why was the Great Wall of China built?",
+    "answers": { "text": ["to protect Chinese states from invasions"], "answer_start": [37] },
+    "reasoning_label": "causal"
+  },
+  {
+    "context": "Photosynthesis is the process by which green plants use sunlight to make food.",
+    "question": "What do green plants use sunlight for?",
+    "answers": { "text": ["to make food"], "answer_start": [66] },
+    "reasoning_label": "factual"
+  },
+  {
+    "context": "J.K. Rowling is the author of the Harry Potter book series.",
+    "question": "Who wrote the Harry Potter books?",
+    "answers": { "text": ["J.K. Rowling"], "answer_start": [0] },
+    "reasoning_label": "factual"
+  }
+]

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PID Control System Simulation </title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<style>
+    #dataForm {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    #dataForm label, #dataForm .slider, #dataForm p {
+        margin-right: 10px; /* Adjust the space between form elements */
+    }
+</style>
+
+<body onload="submitData()">
+    <h2>PID Control System Simulation</h2>
+    <form id="dataForm">
+        <label for="pk_values">Pk:</label>
+        <input type="range" min="0.2" max="1.0" step="0.05" value="0.1" class="slider" id="pk" onmouseup="submitData()"
+            ontouchend="submitData()" <p> <span id="pk_val"></span> , </p>
+        <label for="pd_values">Pd:</label>
+        <input type="range" min="0.0" max="1.0" step="0.1" value="0.0" class="slider" id="pd" onmouseup="submitData()"
+        ontouchend="submitData()" <p><span id="pd_val"></span> ,</p>
+        <label for="pi_values">Pi:</label>
+        <input type="range" min="0.01" max="5" step="0.1" value="4.0" class="slider" id="pi" onmouseup="submitData()"
+        ontouchend="submitData()" <p> <span id="pi_val"></span>, </p>
+        <!--<button type="button" onclick="submitData()">Plot Data</button>-->
+    </form>
+    <div id="dataForm"> <b>Selected: </b> <span id="math-container"></span> <span id="points"></span> </div>
+    <div id="plot"></div>
+
+    <script>
+
+        document.getElementById('pk_val').innerHTML = document.getElementById('pk').value;
+        document.getElementById('pd_val').innerHTML = document.getElementById('pd').value;
+        document.getElementById('pi_val').innerHTML = Number(document.getElementById('pi').value);
+
+        document.getElementById('pk').oninput = function() {
+            document.getElementById('pk_val').innerHTML = this.value;
+        }
+        document.getElementById('pd').oninput = function() {
+            document.getElementById('pd_val').innerHTML = this.value;
+        }
+        document.getElementById('pi').oninput = function() {
+            document.getElementById('pi_val').innerHTML = Number(this.value);
+        }
+
+        function updateLatexContent(latex) {
+            var mathContainer = document.getElementById('math-container');
+            mathContainer.innerHTML = ''; // Clear any previous content
+            var mathScript = document.createElement('script');
+            mathScript.type = 'math/tex';
+            mathScript.textContent = latex;
+            mathContainer.appendChild(mathScript);
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub, mathContainer]);
+        }
+
+        function submitData() {
+            var pk_val = document.getElementById('pk').value
+            var pd_val = document.getElementById('pd').value
+            var pi_val = Number(document.getElementById('pi').value)
+
+
+
+            var data = {
+                pk: pk_val,
+                pd: pd_val,
+                pi: pi_val
+            };
+
+            fetch('/plot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                var plotData = data <!-- JSON.parse(data); -->
+                var config = {responsive: true}
+                Plotly.newPlot('plot', plotData.data, plotData.layout, config);
+                var myPlot = document.getElementById('plot')//,
+                    // data = plotData.data,
+                    // layout = plotData.layout
+                myPlot.on('plotly_click', function(data){
+                    txt = data.points[0].data.name
+                    points = ",&nbsp;&nbsp; <b>click on point:</b> " + data.points[0].x+",   "+
+                        data.points[0].y
+                    updateLatexContent(txt)
+                    document.getElementById('points').innerHTML = points
+                    // alert( txt );
+                    }
+                )
+            });
+        }
+
+    </script>
+</body>
+</html>

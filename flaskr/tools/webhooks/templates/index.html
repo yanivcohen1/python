@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webhook Callback</title>
+</head>
+<body>
+    <h1>Webhook Callback</h1>
+    <div id="response"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const eventSource = new EventSource('/events');
+            eventSource.onmessage = function(event) {
+                const response = document.getElementById('response');
+                response.innerText = `Received data: ${event.data}`;
+            };
+        });
+    </script>
+</body>
+</html>

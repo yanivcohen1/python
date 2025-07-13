@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plotly Data Plotter</title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h2>Plotly Data Plotter</h2>
+    <form id="dataForm">
+        <label for="x_values">X Values (comma-separated):</label>
+        <input type="text" id="x_values" name="x_values">
+        <br><br>
+        <label for="y_values">Y Values (comma-separated):</label>
+        <input type="text" id="y_values" name="y_values">
+        <br><br>
+        <button type="button" onclick="submitData()">Plot Data</button>
+    </form>
+    <p id="selected"></p>
+    <div id="plot"></div>
+
+    <script>
+
+        function submitData() {
+            var xValues = document.getElementById('x_values').value.split(',').map(Number);
+            var yValues = document.getElementById('y_values').value.split(',').map(Number);
+
+            var data = {
+                x_values: xValues,
+                y_values: yValues
+            };
+
+            fetch('/plot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                var plotData = data <!-- JSON.parse(data); -->
+                var config = {responsive: true}
+                Plotly.newPlot('plot', plotData.data, plotData.layout, config);
+                var myPlot = document.getElementById('plot') //,
+                    // data = plotData.data,
+                    // layout = plotData.layout
+                myPlot.on('plotly_click', function(data){
+                    txt = "<b>Selected:</b> " + data.points[0].data.name +
+                        " <b>click on point:</b> " +
+                        data.points[0].x+","+
+                        data.points[0].y
+                    document.getElementById('selected').innerHTML = txt
+                    // alert( txt );
+                    }
+                )
+            });
+        }
+
+    </script>
+</body>
+</html>

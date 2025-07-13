@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload & Display HTML (with its own JS/CSS)</title>
+  <style>
+    /* Full viewport and flex layout for single scrollbar */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    h2 {
+      margin-block: 0.1em;
+    }
+    .container {
+      flex: 1;                /* fill the vertical space */
+      display: flex;
+      flex-direction: column;
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    input[type="file"] {
+      display: block;
+      margin-top: 0.5rem;
+    }
+    iframe {
+      flex: 1;               /* grow to fill remaining space */
+      width: 100%;
+      border: none;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Upload an HTML File (with its own JS/CSS)</h2>
+    <!-- <p>Select an HTML file (with its own JS/CSS). It will render below, filling the viewport with a single scrollbar.</p> -->
+
+    <label for="fileInput">
+      <input type="file" id="fileInput" accept=".html,text/html" />
+    </label>
+
+    <iframe id="viewer" sandbox="allow-scripts allow-same-origin"></iframe>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const viewer = document.getElementById('viewer');
+    let currentUrl = null;
+
+    // Receive height messages from iframe (for dynamic content resizing)
+    window.addEventListener('message', event => {
+      if (event.source === viewer.contentWindow && event.data?.iframeHeight) {
+        viewer.style.height = event.data.iframeHeight + 'px';
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      // Cleanup old URL
+      if (currentUrl) URL.revokeObjectURL(currentUrl);
+
+      // Load new blob
+      currentUrl = URL.createObjectURL(new Blob([file], { type: 'text/html' }));
+      viewer.src = currentUrl;
+    });
+
+    viewer.addEventListener('load', () => {
+      try {
+        const doc = viewer.contentWindow.document;
+        // Inject script to post dynamic height updates
+        const script = doc.createElement('script');
+        script.textContent = `
+          function postHeight() {
+            const h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+            window.parent.postMessage({ iframeHeight: h }, '*');
+          }
+          new ResizeObserver(postHeight).observe(document.documentElement);
+          window.addEventListener('DOMContentLoaded', postHeight);
+          postHeight();
+        `;
+        doc.documentElement.appendChild(script);
+      } catch (e) {
+        console.warn('Could not inject observer script into iframe.', e);
+      }
+    });
+  </script>
+
+</body>
+</html>

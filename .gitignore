@@ -1,0 +1,59 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+/venv
+/build
+/node_modules
+/flaskr/__pycache__
+/flaskr.egg-info
+/instance/flaskr.sqlite
+*.pyc
+media/
+package-lock.json
+yarn.lock
+chrome_langchain_db/
+flaskr/tools/ai/my_gpt/train.bin
+flaskr/tools/ai/my_gpt/validation.bin
+flaskr/tools/ai/my_gpt/models/
+flaskr/tools/ai/chat/
+flaskr/tools/ai/my_gpt/lightning_logs/
+flaskr/tools/jupiter_plotly_scipy/CT_scan.npy

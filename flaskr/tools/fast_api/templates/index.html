@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Chat</title>
+</head>
+<body>
+    <h1>WebSocket Echo</h1>
+    <input type="text" id="messageInput" placeholder="Enter a message" />
+    <button onclick="sendMessage()">Send</button>
+    <h3>Server Messages:</h3>
+    <ul id="messages"></ul>
+
+    <script>
+        let ws;
+        let isConnected = false;
+
+        function generateRandomUserId() {
+            return 'user_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+        }
+
+        const userId = encodeURIComponent(generateRandomUserId());
+        console.log(userId);
+
+        function connectWebSocket() {
+            ws = new WebSocket(`ws://localhost:7000/ws/${userId}`);
+
+            ws.onopen = () => {
+                console.log('WebSocket connected');
+                isConnected = true;
+            };
+
+            ws.onmessage = function(event) {
+                const messages = document.getElementById("messages");
+                const message = document.createElement("li");
+                message.textContent = event.data;
+                messages.appendChild(message);
+                ws.send(event.data+" - from " + userId);
+            };
+
+            ws.onclose = () => {
+                console.log('WebSocket closed');
+                isConnected = false;
+            };
+
+            ws.onerror = (err) => {
+                console.error('WebSocket error:', err);
+                // Optional: Close on error to ensure a clean reconnect
+                ws.close();
+                isConnected = false;
+                // reconnect after short delay
+                setTimeout(() => {
+                  if (document.visibilityState === 'visible' && !isConnected) {
+                    console.log('Reconnecting after error...');
+                    connectWebSocket();
+                  }
+                }, 1000); // delay in ms
+            };
+        }
+
+        function sendMessage() {
+            const input = document.getElementById("messageInput");
+            // ws.send(input.value);
+            fetch(`/send_message_sync?user_id=${userId}&msg=${encodeURIComponent(input.value)}`)
+              .then(response => response.json())
+              .then(data => {
+                console.log(data); // Handle the response
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+            input.value = "";
+        }
+
+        // Reconnect only if disconnected when tab becomes visible
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible' && !isConnected) {
+            console.log('Page active and WebSocket disconnected. Reconnecting...');
+            connectWebSocket();
+          }
+        });
+
+        // Initial connection
+        connectWebSocket();
+    </script>
+</body>
+</html>

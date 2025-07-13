@@ -1,0 +1,22 @@
+>> lsc()
+sr               : Send and receive packets at layer 3
+sr1              : Send packets at layer 3 and return only the first answer
+srp              : Send and receive packets at layer 2
+srp1             : Send and receive packets at layer 2 and return only the first answer
+srloop           : Send a packet at layer 3 in loop and print the answer each time
+srploop          : Send a packet at layer 2 in loop and print the answer each time
+sniff            : Sniff packets
+p0f              : Passive OS fingerprinting: which OS emitted this TCP SYN ?
+arpcachepoison   : Poison target's cache with (your MAC,victim's IP) couple
+send             : Send packets at layer 3
+sendp            : Send packets at layer 2
+traceroute       : Instant TCP traceroute
+arping           : Send ARP who-has requests to determine which hosts are up
+ls               : List  available layers, or infos on a given layer
+lsc              : List user commands
+queso            : Queso OS fingerprinting
+nmap_fp          : nmap fingerprinting
+report_ports     : portscan a target and output a LaTeX table
+dyndns_add       : Send a DNS add message to a nameserver for "name" to have a new "rdata"
+dyndns_del       : Send a DNS delete message to a nameserver for "name"
+[...]

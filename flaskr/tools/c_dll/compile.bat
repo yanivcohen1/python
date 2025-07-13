@@ -1,0 +1,1 @@
+"C:\msys64\mingw64\bin\gcc.exe" -shared -o jsonprocess.dll -I/"C:\msys64\mingw64\include" jsonprocess.c

@@ -1,0 +1,8 @@
+# for latex  support
+chrome plugin name: TeX All the Things
+url: https://chrome.google.com/webstore/detail/tex-all-the-things/cbimabofgmfdkicghcadidpemeenbffn/details
+
+# for sub menu in menu bar
+install st-pages
+url: https://pypi.org/project/st-pages/
+demo: https://st-pages-sections.streamlit.app/

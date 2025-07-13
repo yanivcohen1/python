@@ -1,0 +1,27 @@
+import rsa
+import base64
+import pickle
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+# Generate a new RSA key pair of 2048 bits
+message = 'To be encrypted'
+
+PUBLIC_KEY = b'-----BEGIN PUBLIC KEY-----MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBWJn5mmYyn4Fa210991wVluNXsfO2q6X8iYt5w2ZOtMuQJhCAVQTg74rQwzwppUS6GU3vXgOTVHTeq9hhrvRvA9xcAMgaLRTTNYb1Nw+8Eq5yJCbQhcR4NsVMkmiegBNcmqeVIMyZfrb1B4uTarsoEefHkmnZfCKMt1qbFCxdQVWnFjMK+GGYFGGa7aHIIvnmlWjKhTKVjxT7ZLhxl65IbWvbR9W+OO1rH/VJ6+RXmbS66qYCQBUIyNhSbzAlm1K3jr61FD29SsPgevCfBhuABLsa7zYuBpVUz4v2bBnfO7UNPWCoQFffPyCYh2kTI/EEoTnu9C5Rx70M+AlXHbyjdAgMBAAE=-----END PUBLIC KEY-----'
+PRIVET_KEY = b'-----BEGIN RSA PRIVATE KEY-----MIIEoQIBAAKCAQBWJn5mmYyn4Fa210991wVluNXsfO2q6X8iYt5w2ZOtMuQJhCAVQTg74rQwzwppUS6GU3vXgOTVHTeq9hhrvRvA9xcAMgaLRTTNYb1Nw+8Eq5yJCbQhcR4NsVMkmiegBNcmqeVIMyZfrb1B4uTarsoEefHkmnZfCKMt1qbFCxdQVWnFjMK+GGYFGGa7aHIIvnmlWjKhTKVjxT7ZLhxl65IbWvbR9W+OO1rH/VJ6+RXmbS66qYCQBUIyNhSbzAlm1K3jr61FD29SsPgevCfBhuABLsa7zYuBpVUz4v2bBnfO7UNPWCoQFffPyCYh2kTI/EEoTnu9C5Rx70M+AlXHbyjdAgMBAAECggEAShui8C92R5M8BN0CjIXDJtXxcBWnfTaPHs1d/EWuO3djoqv9zUrlTN6fkr0Hf8FN/E8kYSWHs6wGjxJTv5pVnZDwQELITlWiLmq9pX++xI27gkbOpVXhPHYlx360R3rieWf8zDbz86pI+7xqkZN6RI+B/dzBps6PUIctvqLj0z4lI7fXRTbb4SB2cDcg/Dnv4CL203jyKf7wjOZOK174obFW3B23K8nu6As3W6K4W3tdUhS8rnM7qucoPt+fIq9ZES2X/FKtk4xyJK/V3IJBV/3fs8AV5PF7V6eYBcNPNchdOvLmI4BuKS43TWuJ67ZjrZvRASfgm0kBiTTR0qSJIQKBgQCmpUATx2AWUAJgmU28PX6/A9KP+pP+MloQXw/0uC04r3vgLcNYZXmP3zBxXwxmTxUBuYJDZIX7S8lKjolFdUlggjluOZBPYWntHde11TiORVad66TFiZSYTNfRNWGJLivMeG58dVUoqQDDDHy1q66LZjwTkCrONqcrce2jGbokvwKBgQCEWADatyfCW2j2Lq9IwoRekVCal/kudp4Z5fFsAM0dzg5GfwxUzNfnYZRkjBgwKZUFT2S18cXsonrMIaQh1vWUXL7Sx7vRxhMtgm1jX1F9UQuHJfdAXrGFrfW0kIgsq56cyWX8Z/lKeeBXg8nIHaEMTvPKBOCe+8YXWekzPnrNYwKBgFHEkd1inc408gWuE0uDLRbS7FWDUWyQDkssKesdF+tRh8nnCovsNqqWi/GE/tOQiDExci5ZO7ijZiB0Mfzn4No+66kfC6U3mj8jvn1VIwwED80rG81lhYj5Y4ge1j32br1EdooRFHj//AS4stR9agayYlYDDk3i2UHjBARckk6HAoGAKFU9pWpuRpBfM6/UocMOXlfBDexE98EUu+XVJsozuOKkfR2ZH3ryTcTyWZZMhNkXXm/szHprjIuUCwQxplKBs350dX6DohHQpGz8c22IQz3g2oZajRaO2aPDnwzxQ1PmWfgTCdKSKf1svp8ebsuA2mRxbd8AqdMnctRm+sQO3usCgYBluDDRNVRaJta/MponUmJE2/EWpj4m67xv0rA23EeuUP+JVrk/AOF4ufcX4hZ2+i8lV4OKZQYnJoatZDM+mTnsAED4H1ofyZou7zg9+PmFpFKAVgM3ycFUULANXPUDvZsNZzX5ffgB4dBoSqX4P6YSCMvTzl2CE+1JSU4MdKYeww==-----END RSA PRIVATE KEY-----'
+
+print("msg to encrapt:", message)
+
+mykey = RSA.generate(2048)
+privete_key_str = mykey.exportKey()
+pub_key_str = mykey.public_key().export_key()
+
+pub_key = RSA.importKey(pub_key_str)
+cipher = PKCS1_OAEP.new(pub_key)
+ciphertext = cipher.encrypt(pickle.dumps(message))
+print("encripted msg:", ciphertext)
+# At the receiver side, decryption can be done using the private part of the RSA key:
+
+privete_key = RSA.importKey(privete_key_str)
+cipher = PKCS1_OAEP.new(privete_key)
+message = cipher.decrypt(ciphertext)
+print("decrypt msg:", pickle.loads(message))

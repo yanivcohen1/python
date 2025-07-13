@@ -1,0 +1,5 @@
+https://cloudconvert.com/md-to-docx
+
+pandoc -o output.docx -f markdown -t docx filename.md
+// in the same folder as md file
+pandoc -o ex31.docx -f markdown -t docx ex3.md

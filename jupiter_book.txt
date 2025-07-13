@@ -1,0 +1,78 @@
+# https://jupyterbook.org/en/stable/intro.html
+# https://www.youtube.com/watch?v=wuP54pQpK00
+
+# install Jupyter-book
+pip install Jupyter-book
+
+# init the book
+Jupyter-book create book
+
+# update intro.md // the main page
+# update _toc.yml // the left side menu
+# the first markdown in page.ipynb is the name of the page
+
+# build the book
+Jupyter-book build book
+
+# build all not just changes
+Jupyter-book build book --all
+
+# Build PDF Book
+jupyter-book pdf <path_to_your_book>
+
+# Build HTML Book
+jupyter-book build <path_to_your_book>
+jupyter-book build "C:\pyProj\yaniv\gumini_test.ipynb"
+
+# To build all pages Table of Contents (TOC) this will creating _toc.yml file
+jupyter-book toc from-project .
+# edit _toc.yml and run this again
+jupyter-book build .
+
+# to add pic
+<img src="control_jupiter.jpg" alt="My Image">
+
+# add sub_secection to the book in file _toc.yml
+format: jb-book
+root: index
+parts:
+  - caption: Name of Part 1
+    chapters:
+    - file: path/to/part1/chapter1
+    - file: path/to/part1/chapter2
+      sections:
+      - file: path/to/part1/chapter2/section1
+  - caption: Name of Part 2
+    chapters:
+    - file: path/to/part2/chapter1
+    - file: path/to/part2/chapter2
+      sections:
+      - file: path/to/part2/chapter2/section1
+
+
+# convert from word to html
+
+# to add existing html page to left side menu
+# In your _config.yml file
+navbar:
+  left:
+    - text: "My Custom Page"
+      href: "path/to/your/page.html"
+
+# convert wor to rst to add to md file
+https://jupyterbook.org/en/stable/file-types/restructuredtext.html
+```{eval-rst}
+.. note::
+
+   A note written in reStructuredText.
+
+.. include:: ./include-rst.rst
+```
+
+# to publish
+pip install ghp-import
+# From the main branch of your book’s root directory (where the _build/html folder is located), run:
+ghp-import _build/html
+
+# This command copies the contents of your built book to a branch called gh-pages and pushes it to GitHub.
+# The gh-pages branch will be created automatically for you.

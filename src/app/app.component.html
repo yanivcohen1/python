@@ -1,0 +1,26 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to Angular + Python + Flask Demo!
+  </h1>
+</div>
+
+<div>
+  <button (click)="sayHi()">Say Hi</button>
+  <span>Server data: {{serverData | json}}</span>
+</div>
+
+<div>
+  <button (click)="getAllEmployees()">All Employees</button>
+  <span>All Employee data: {{employeeData | json}}</span>
+  <br>
+  <span>All Employees names: {{names}}</span>
+</div>
+
+<div>
+  <button (click)="getEmployee(box.value)">Employees By ID</button>
+  <label for="fname"> Employe ID:</label>
+  <input type="text" #box id="fname" name="fname" value="1"><br>
+  <span>Employee data: {{employee | json}}</span>
+  <br>
+  <span>Employee : {{name}}</span>
+</div>

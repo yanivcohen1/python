@@ -1,0 +1,4 @@
+*.pth filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+QM[[:space:]]Tunnelling.ipynb filter=lfs diff=lfs merge=lfs -text
+QM_Tunnelling.gif filter=lfs diff=lfs merge=lfs -text
