@@ -25,7 +25,7 @@ if __name__ == "__main__":
     max_processes = cpu_count()
     print(f"Running up to {max_processes} processes, each with 2 threads:\n")
 
-    # Simulate a large number of tasks
+    # Simulate a large number of tasks (50 tasks)
     tasks = range(50)
 
     # Function to batch tasks
