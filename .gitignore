@@ -58,3 +58,4 @@ flaskr/tools/ai_chat/ai/lightning_logs/
 lightning_logs/
 flaskr/tools/ai_chat/ai/models/
 allfiles.txt
+tests/test2.py
