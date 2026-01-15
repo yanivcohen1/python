@@ -1,5 +1,5 @@
 {
-  "python.analysis.typeCheckingMode": "off", // "off", "basic", "standard", "strict"
+  "python.analysis.typeCheckingMode": "off",
   "python.analysis.diagnosticMode": "workspace",
   "python.languageServer": "Default",
   "esbonio.sphinx.confDir": "",
