@@ -1,7 +1,7 @@
 # static type checking
 Pylance: command palette: Preferences: Open User Settings (JSON) add "python.analysis.typeCheckingMode": "strict"
 
-// for testting python ident run 
+// for testting python ident run
 python -tt
 Flaskr
 ======
@@ -71,7 +71,7 @@ Create a virtualenv and activate it::
 
     # test it in cmd
     python -m pip -V
-    where python
+    where.exe python
     # or in PS
     python -v # control+Z to exit
     # in linux
