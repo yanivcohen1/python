@@ -22,7 +22,7 @@ dependencies = [
   "fastapi", "fastapi_sqlalchemy", "sqlmodel", "passlib", "uvicorn", "locust", "textblob", "flask-swagger-ui",
   "pytest" , "coverage", "python-multipart", "pyshark", "motor==3.0.0", "pymongo==4.1.1", "manim==0.18.1",
   "langchain", "langchain-ollama", "langchain-chroma", "langchain-openai", "langchain-community", "fastembed", "pdfplumber", "duckduckgo-search",
-  "python-docx", "docxtpl", "xltpl", "pypandoc","janus","datasets", "reportlab", "redis[asyncio]","redis",
+  "python-docx", "docxtpl", "xltpl", "pypandoc","janus","datasets", "reportlab", "redis[asyncio]","redis", "pyvista",
   # Core PyTorch
   "torch @ https://download.pytorch.org/whl/cu128/torch-2.7.1%2Bcu128-cp312-cp312-win_amd64.whl",
   # TorchVision (matches torch 2.7.1)
