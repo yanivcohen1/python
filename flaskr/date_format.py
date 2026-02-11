@@ -1,5 +1,4 @@
-from datetime import datetime
-import datetime as dt
+from datetime import datetime, timedelta
 
 # from time import gmtime, strftime
 import time
@@ -37,7 +36,7 @@ time_and_date_localization()
 date_string = "2022-03-19 17:01:37"
 date_format = "%Y-%m-%d %H:%M:%S"
 # Convert string to datetime
-endDate = dt.datetime.strptime(date_string, date_format)
+endDate = datetime.strptime(date_string, date_format)
 # date_time_str = dt.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
-startDate = endDate - dt.timedelta(days=18) # reduce from todaty 18 days
+startDate = endDate - timedelta(days=18) # reduce from todaty 18 days
 print("delta time is:", startDate) # 2022-03-01 17:01:37
