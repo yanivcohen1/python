@@ -1,8 +1,8 @@
-import matplotlib.pyplot as plt
+from datetime import timedelta
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
-from datetime import datetime, timedelta
 
 # Data Points (Date, Score, Model)
 data = [
@@ -20,12 +20,13 @@ df["days"] = (df["date"] - start_date).dt.days
 
 
 # Define Logistic Function with L=100 fixed
+# pylint: disable=C0103
 def logistic_fixed_L(x, k, x0):
     return 100 / (1 + np.exp(-k * (x - x0)))
 
 
 # Fit the curve
-popt, _ = curve_fit(
+popt, *_ = curve_fit(
     logistic_fixed_L, df["days"], df["score"], p0=[0.005, 300], maxfev=5000
 )
 
