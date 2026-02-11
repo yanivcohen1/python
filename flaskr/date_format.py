@@ -15,7 +15,7 @@ def time_and_date_localization():
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")  # 29/06/2023 18:20:49
     gmt = time.gmtime()
     print(
-        "Local: " + now.strftime("%a, %d %b %Y %I:%M:%S %p %Z")
+        "\nLocal: " + now.strftime("%a, %d %b %Y %I:%M:%S %p %Z")
     )  # Local: Mon, 08 May 2017 11:51:07 AM IST
     print(
         "\nGMT: " + time.strftime("%a, %d %b %Y %I:%M:%S %p %Z", gmt)
@@ -24,8 +24,15 @@ def time_and_date_localization():
       # Your Time Zone is GMT +0200
     return dt_string
 
+# Example: String to datetime object
+now = datetime.now()
+now_str = now.strftime("%Y-%m-%d %H:%M:%S")
+print("Current UTC Time:", now_str)
+now2 = datetime.strptime(now_str, "%Y-%m-%d %H:%M:%S")
+print("Current UTC Time:", now2)
 
 time_and_date_localization()
+
 # timeDate menipulation
 date_string = "2022-03-19 17:01:37"
 date_format = "%Y-%m-%d %H:%M:%S"
