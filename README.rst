@@ -72,6 +72,7 @@ Create a virtualenv and activate it::
     # test it in cmd
     python -m pip -V
     where.exe python
+    python -c "import sys; print(sys.executable)"
     # or in PS
     python -v # control+Z to exit
     # in linux
