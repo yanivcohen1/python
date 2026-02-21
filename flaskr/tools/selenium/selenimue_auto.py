@@ -11,14 +11,12 @@ options = Options()
 options.add_argument("--start-maximized")
 options.add_experimental_option("detach", True)
 current_folder = os.path.dirname(os.path.abspath(__file__))
-chromedriver_path = os.path.join(current_folder, "chromedriver.exe")
-# chrome_install = ChromeDriverManager().install()
-# folder = os.path.dirname(chrome_install)
-# chromedriver_path = os.path.join(folder, "chromedriver.exe")
+# chromedriver_path = os.path.join(current_folder, "chromedriver.exe")
+chrome_install = ChromeDriverManager().install()
+folder = os.path.dirname(chrome_install)
+chromedriver_path = os.path.join(folder, "chromedriver.exe")
 service = Service(chromedriver_path)
-driver = webdriver.Chrome(
-    service=service, options=options
-)
+driver = webdriver.Chrome(service=service, options=options)
 driver.get("https://www.neuralnine.com/")
 # driver.maximize_window()
 # Wait until the form elements are present time out is 10 sec
@@ -28,7 +26,15 @@ WebDriverWait(driver, 10).until(
 # driver.find_element(By.CSS_SELECTOR, "a[href='https://www.neuralnine.com/books/']").click()
 # driver.find_element(By.PARTIAL_LINK_TEXT, "Books").click()
 links = driver.find_elements(By.XPATH, "//a[@href]")
+# menu-item-217 > a
 for link in links:
     if "Books" in link.get_attribute("innerHTML"):
-        link.click()
-        break
+        try:
+            link.click()
+            break
+        except Exception as e:
+            continue
+
+assert "Books" in driver.title
+driver.quit()
+print("done")
