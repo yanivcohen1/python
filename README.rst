@@ -55,10 +55,9 @@ Create a virtualenv and activate it::
     $ . .venv/bin/activate
 
     # windows
-    $ py -3.12 -m venv venv
-    $ py -m venv venv
-	  $ python -m venv venv
-    $ venv\Scripts\activate
+    $ py -3.12 -m venv .venv
+	  $ python -m venv .venv
+    $ .venv\Scripts\activate
     # Create a virtual environment using the full path to the Python executable version X.Y
     $ /path/to/spcific_python_version/python.exe -m venv myenv
     $ venv\Scripts\activate
@@ -104,9 +103,9 @@ Set-ExecutionPolicy RemoteSigned
 
 Or on Windows cmd::
 
-    $ py -m venv venv
-    $ venv\Scripts\activate.bat
-    $ venv\Scripts\activate
+    $ py -3.12 -m venv .venv
+    $ .venv\Scripts\activate.bat
+    $ .venv\Scripts\activate
     // to enable running script.ps1 in "Admin" mode run
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
 

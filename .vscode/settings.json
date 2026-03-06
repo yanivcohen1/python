@@ -3,6 +3,7 @@
   "python.analysis.diagnosticMode": "workspace",
   "python.languageServer": "Default",
   "esbonio.sphinx.confDir": "",
+  "esbonio.server.pythonPath": "${workspaceFolder}/.venv/Scripts/python.exe",
   "python.testing.unittestArgs": [
     "-v",
     "-s",

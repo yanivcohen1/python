@@ -16,19 +16,25 @@ dependencies = [
   "scapy", "psutil", "keyboard", "sortedcontainers", "numpy", "matplotlib", "pandas", "pandas_datareader",
   "plotly==5.24", "cufflinks", "ipykernel", "selenium", "webdriver-manager", "sympy==1.13.3", "scipy", "pycryptodome",
   "ipywidgets", "IPython", "anywidget", "seaborn", "nbformat", "openpyxl", "jupyterlab-mathjax3", "google-generativeai",
-  "pint", "scikit-image", "streamlit", "vpython", "pygame", "numba", "pymunk", "opencv-python", "pyautogui",
+  "pint", "scikit-image", "streamlit", "vpython", "pygame-ce", "numba", "pymunk", "opencv-python", "pyautogui",
   "yfinance", "openai", "igraph", "wget", "pyhid-usb-relay", "pywin32", "pynput",
   "websockets", "pyyaml", "beautifulsoup4","aiohttp", "nest_asyncio", "elasticsearch==2.4.1", "elasticsearch-dsl==2.2.0",
   "fastapi", "fastapi_sqlalchemy", "sqlmodel", "passlib", "uvicorn", "locust", "textblob", "flask-swagger-ui",
-  "pytest" , "coverage", "python-multipart", "pyshark", "motor==3.0.0", "pymongo==4.1.1", "manim==0.18.1",
+  "pytest" , "coverage", "python-multipart", "pyshark", "motor==3.0.0", "pymongo==4.1.1", "manim",
   "langchain", "langchain-ollama", "langchain-chroma", "langchain-openai", "langchain-community", "fastembed", "pdfplumber", "duckduckgo-search",
   "python-docx", "docxtpl", "xltpl", "pypandoc","janus","datasets", "reportlab", "redis[asyncio]","redis", "pyvista",
   # Core PyTorch
-  "torch @ https://download.pytorch.org/whl/cu128/torch-2.7.1%2Bcu128-cp312-cp312-win_amd64.whl",
+  "torch",
+  # TorchVision
+  "torchvision",
+  # TorchAudio
+  "torchaudio"
+  # Core PyTorch (matches torch 2.7.1)
+  # "torch @ https://download.pytorch.org/whl/cu128/torch-2.7.1%2Bcu128-cp312-cp312-win_amd64.whl",
   # TorchVision (matches torch 2.7.1)
-  "torchvision @ https://download.pytorch.org/whl/cu128/torchvision-0.22.1%2Bcu128-cp312-cp312-win_amd64.whl",
+  # "torchvision @ https://download.pytorch.org/whl/cu128/torchvision-0.22.1%2Bcu128-cp312-cp312-win_amd64.whl",
   # TorchAudio (matches torch 2.7.1)
-  "torchaudio @ https://download.pytorch.org/whl/cu128/torchaudio-2.7.1%2Bcu128-cp312-cp312-win_amd64.whl",
+  # "torchaudio @ https://download.pytorch.org/whl/cu128/torchaudio-2.7.1%2Bcu128-cp312-cp312-win_amd64.whl",
   ]
 
 [project.urls]

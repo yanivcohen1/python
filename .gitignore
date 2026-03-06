@@ -40,7 +40,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-/venv
+.venv
 /build
 /node_modules
 /flaskr/__pycache__
