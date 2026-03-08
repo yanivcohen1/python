@@ -22,7 +22,7 @@ dependencies = [
   "fastapi", "fastapi_sqlalchemy", "sqlmodel", "passlib", "uvicorn", "locust", "textblob", "flask-swagger-ui",
   "pytest" , "coverage", "python-multipart", "pyshark", "motor==3.0.0", "pymongo==4.1.1", "manim",
   "langchain", "langchain-ollama", "langchain-chroma", "langchain-openai", "langchain-community", "fastembed", "pdfplumber", "duckduckgo-search",
-  "python-docx", "docxtpl", "xltpl", "pypandoc","janus","datasets", "reportlab", "redis[asyncio]","redis", "pyvista",
+  "python-docx", "docxtpl", "xltpl", "pypandoc","janus","datasets", "reportlab", "redis[asyncio]","redis", "pyvista","flask-smorest",
   # Core PyTorch
   "torch",
   # TorchVision

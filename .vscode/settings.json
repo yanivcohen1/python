@@ -79,5 +79,6 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "functional": "c"
-  }
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:system"
 }
