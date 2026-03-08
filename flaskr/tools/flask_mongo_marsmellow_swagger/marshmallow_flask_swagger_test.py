@@ -51,4 +51,4 @@ class User(MethodView):
 api.register_blueprint(blp)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000) # http://127.0.0.1:5000/swagger-ui
+    app.run(debug=True, use_reloader=False, port=5000) # http://127.0.0.1:5000/swagger-ui
