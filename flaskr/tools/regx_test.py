@@ -9,11 +9,16 @@ import re
 regex_pattern = r"(?s)\[cite.*?\]"
 
 content = """Welcome to [cite: 1] and also
-to [cite: 2]!"""
+to [cite: 3]!"""
 
+# to remove [cite: XX] from the content
 clean_content = re.sub(regex_pattern, "", content)
 
 print(clean_content)
-# פלט:
 # Welcome to  and also
 # to !
+
+# to find all [cite: XX] from the content
+matches = re.findall(regex_pattern, content)
+
+print(matches) # ['[city Jerusalem]', '[city Tel Aviv]']
