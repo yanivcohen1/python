@@ -21,4 +21,4 @@ print(clean_content)
 # to find all [cite: XX] from the content
 matches = re.findall(regex_pattern, content)
 
-print(matches) # ['[city Jerusalem]', '[city Tel Aviv]']
+print(matches) # ['[cite: 1]', '[cite: 3]']
