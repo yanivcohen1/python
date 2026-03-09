@@ -22,3 +22,10 @@ print(clean_content)
 matches = re.findall(regex_pattern, content)
 
 print(matches) # ['[cite: 1]', '[cite: 3]']
+
+# in shellscript:
+# yaniv@YanivAsusLaptop:~$ echo "hello [cite :1] from [cite :3] world" | grep -o '\[cite[^]]*\]'
+# [cite :1]
+# [cite :3]
+# yaniv@YanivAsusLaptop:~$ echo "hello [cite :1] from [cite :3] world" | sed 's/\[cite[^]]*\]//g'
+# hello  from  world
