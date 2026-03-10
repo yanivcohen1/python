@@ -24,22 +24,31 @@ matches = re.findall(regex_pattern, content)
 print(matches) # ['[cite: 1]', '[cite: 3]']
 
 
-# ---------- without regx ------------==
-text = """hello [cite1 :a1] from [cite2 :b3]
-world [cite3 :c99]"""
+text = """hello: 'game :["a 1"]' from 'cite2 :{b: 3}'
+world 'cite3 :c99'"""
 
-parts = text.split("[")[1:]
-citations = [p.split("]")[0] for p in parts]
-print(citations)
-# Output: ['cite1 :a1', 'cite2 :b3', 'cite3 :c99']
-keyVals = {}
-for i, citation in enumerate(citations):
-    key, value = citation.split(":")
-    keyVals[key.strip()] = value.strip()
-print(keyVals)
-# Output: {'cite1': 'a1', 'cite2': 'b3', 'cite3': 'c99'}
+# This pattern looks for:
+# '      - an opening single quote
+# (      - start of a capture group
+#  [^']+ - one or more characters that are NOT a single quote
+# )      - end of capture group
+# '      - a closing single quote
+results = re.findall(r"'([^']+)'", text)
+print(results)
+# Output: ['game :["a 1"]', 'cite2 :{b: 3}', 'cite3 :c99']
 
-# in shellscript:
+# ---------- without regx ------------
+
+# Split the text by the single quote
+parts = text.split("'")
+# Extract every second element (odd indices)
+# [start:stop:step] -> [1::2] starts at index 1 and takes every 2nd item
+results = parts[1::2]
+print(results)
+# Output: ['game :["a 1"]', 'cite2 :{b: 3}', 'cite3 :c99']
+
+
+# ----------- in shellscript ------------------:
 # Regex:
 # (cite[^)]*) -> (cite followed by any characters that are not ) (using [^)]*), until the closing )
 # echo "hello (cite :1) from (cite :3) world" | grep -o '(cite[^)]*)'
